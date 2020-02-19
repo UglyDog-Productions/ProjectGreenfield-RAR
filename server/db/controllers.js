@@ -91,33 +91,29 @@ const db = pgp(connectionString);
 //   );
 // };
 
-// const updateHelp = (review_id) => {
-//   console.log(review_id);
-//   pool.query(
-//     'UPDATE review SET helpfulness = helpfulness + 1 WHERE review_id = review_id',
-//     [review_id],
-//   );
-//   console.log('returned');
-// };
-
-// const updateReport = (req, res) => {
-//   const { report } = req.body;
-//   const review_id = req.param;
-//   pool.query(
-//     'UPDATE review SET report = true',
-//     [report, review_id],
-//     (error, results) => {
-//       if (error) {
-//         throw error;
-//       }
-//       res.send(204);
-//     },
-//   );
-// };
+function updateHelp(req, res, next) {
+  const review_id = parseInt(req.params.review_id);
+  console.log(review_id);
+  db.none(
+    `UPDATE review SET helpfulness = helpfulness + 1 WHERE review_id = ${review_id}`,
+    [review_id],
+  )
+    .then(function() {
+      res.status(204).json({
+        status: 'success',
+        message: 'reported',
+      });
+    })
+    .catch(function(err) {
+      return next(err);
+    });
+}
 
 function updateReport(req, res, next) {
   const review_id = parseInt(req.params.review_id);
-  db.none('UPDATE review SET report = report', [review_id])
+  db.none(`UPDATE review SET report = report WHERE review_id = ${review_id}`, [
+    review_id,
+  ])
     .then(function() {
       res.status(204).json({
         status: 'success',
@@ -133,6 +129,6 @@ module.exports = {
   // getReviews,
   // // postReview,
   // getMeta,
-  // updateHelp,
+  updateHelp: updateHelp,
   updateReport: updateReport,
 };
