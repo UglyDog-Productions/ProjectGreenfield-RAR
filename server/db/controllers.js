@@ -1,13 +1,4 @@
 /* eslint-disable camelcase */
-// const Pool = require('pg').Pool;
-// const pool = new Pool({
-//   user: 'Savi',
-//   host: 'localhost',
-//   database: 'SDC',
-//   password: 'password',
-//   port: 5432,
-// });
-
 const promise = require('bluebird');
 
 const options = {
@@ -20,61 +11,52 @@ const pgp = require('pg-promise')(options);
 const connectionString = 'postgres://postgres:root@localhost:5432/SDC';
 const db = pgp(connectionString);
 
-// const getReviews = (req, res) => {
-//   const product_id = req.params;
-//   const {
-//     review_id,
-//     rating,
-//     summary,
-//     recommend,
-//     response,
-//     body,
-//     date,
-//     name,
-//     helpfulness,
-//     url,
-//   } = req.body;
-//   pool.query(
-//     'SELECT (review_id, rating, summary, recommend, response, body, date, name, helpfulness, url) FROM reviews Inner JOIN images ON reviews.review_id = images.review_id',
-//     [
-//       product_id,
-//       review_id,
-//       rating,
-//       summary,
-//       recommend,
-//       response,
-//       body,
-//       date,
-//       name,
-//       helpfulness,
-//       url,
-//     ],
-//     (error, results) => {
-//       if (error) {
-//         throw error;
-//       }
-//       res.send(200);
-//     },
-//   );
-// };
+function getReviews(req, res, next) {
+  const product_id = parseInt(req.params.product_id);
+  console.log(product_id);
+  db.any(
+    `SELECT review.review_id, review.rating, review.summary, review.recommend, review.response, review.body, review.date, review.name, review.helpfulness, images.url FROM review INNER JOIN images ON images.review_id = review.review_id WHERE review.product_id = ${product_id}`,
+    [product_id],
+  )
+    .then(function(data) {
+      console.log('clicked');
+      res.status(200).json({
+        status: 'success',
+        data: data,
+        message: 'Got all reviews for product',
+      });
+    })
+    .catch(function(err) {
+      return next(err);
+    });
+}
 
-// // const postReview = (req, res) => {
-// //   const product_id = parseInt(request.params.product_id);
-// //   const {
-// //     rating,
-// //     summary,
-// //     body,
-// //     recommend,
-// //     name,
-// //     email,
-// //     photos,
-// //     characteristics,
-// //   } = request.body;
-// //   pool.query('INSERT INTO reviews(rating, summary, body, recommend, name, email) VALUES (rating, summary, body, recommend, name, email)
-// //   INSERT INTO images
-// //   INSERT INTO characteristics'  )
-// //   res.send(201);
-// // };
+function postReview(req, res, next) {
+  const product_id = parseInt(request.params.product_id);
+  const {
+    rating,
+    summary,
+    body,
+    recommend,
+    name,
+    email,
+    // photos,
+    // characteristics,
+  } = req.body;
+  db.none(
+    `INSERT INTO reviews(rating, summary, body, recommend, name, email) VALUES (${product_id},${rating}, ${summary}, ${body}, ${recommend}, ${name}, ${email})`,
+  )
+    .then(function() {
+      console.log('clicked');
+      res.status(201).json({
+        status: 'success',
+        message: 'Inserted Review',
+      });
+    })
+    .catch(function(err) {
+      return next(err);
+    });
+}
 
 // const getMeta = (req, res) => {
 //   const product_id = req.params;
@@ -101,7 +83,7 @@ function updateHelp(req, res, next) {
     .then(function() {
       res.status(204).json({
         status: 'success',
-        message: 'reported',
+        message: 'Help increased',
       });
     })
     .catch(function(err) {
@@ -126,8 +108,8 @@ function updateReport(req, res, next) {
 }
 
 module.exports = {
-  // getReviews,
-  // // postReview,
+  getReviews: getReviews,
+  postReview: postReview,
   // getMeta,
   updateHelp: updateHelp,
   updateReport: updateReport,
