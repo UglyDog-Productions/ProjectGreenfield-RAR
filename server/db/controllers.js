@@ -32,12 +32,21 @@ function getReviews(req, res, next) {
     });
 }
 
-function postReview(product_id, rating, summary, body, recommend, name, email) {
+function postReview(
+  product_id,
+  rating,
+  summary,
+  body,
+  recommend,
+  name,
+  email,
+  url,
+) {
   console.log(summary);
   const date = moment().format('MMM DD YYYY');
   console.log(date);
   return db.none(
-    `INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},'${date}',${rating}, '${summary}', '${body}', ${recommend}, '${name}', '${email}', false, 0)`,
+    `WITH new_review as (INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},'${date}',${rating}, '${summary}', '${body}', ${recommend}, '${name}', '${email}', false, 0) returning review_id) INSERT INTO images (review_id, url) VALUES((SELECT review_id from new_review), '${url}')`,
   );
 }
 

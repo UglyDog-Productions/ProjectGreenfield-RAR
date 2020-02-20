@@ -11,9 +11,9 @@ router.use(bodyParser.json());
 router.get('/reviews/:product_id/list', db.getReviews);
 router.post('/reviews/:product_id', function(req, res, next) {
   const product_id = parseInt(req.params.product_id);
-  const { rating, summary, body, recommend, name, email } = req.body;
+  const { rating, summary, body, recommend, name, email, url } = req.body;
   console.log(req.body);
-  db.postReview(product_id, rating, summary, body, recommend, name, email)
+  db.postReview(product_id, rating, summary, body, recommend, name, email, url)
     .then(function() {
       console.log('clicked');
       res.status(201).json({
