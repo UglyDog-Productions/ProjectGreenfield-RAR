@@ -34,11 +34,10 @@ function getReviews(req, res, next) {
 
 function postReview(product_id, rating, summary, body, recommend, name, email) {
   console.log(summary);
-  const date = moment().format('MMM Do YY');
+  const date = moment().format('MMM DD YYYY');
+  console.log(date);
   return db.none(
-    `INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},${date},${rating}, ${JSON.stringify(
-      summary,
-    )}, ${body}, ${recommend}, ${name}, ${email}, false, 0)`,
+    `INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},'${date}',${rating}, '${summary}', '${body}', ${recommend}, '${name}', '${email}', false, 0)`,
   );
 }
 
