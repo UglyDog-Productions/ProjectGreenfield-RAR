@@ -15,7 +15,7 @@ function getReviews(req, res, next) {
   const product_id = parseInt(req.params.product_id);
   console.log(product_id);
   db.any(
-    `SELECT review.review_id, review.rating, review.summary, review.recommend, review.response, review.body, review.date, review.name, review.helpfulness, images.url FROM review INNER JOIN images ON images.review_id = review.review_id WHERE review.product_id = ${product_id}`,
+    `SELECT review.review_id, review.rating, review.summary, review.recommend, review.response, review.body, review.date, review.name, review.helpfulness, images.url FROM review INNER JOIN images ON images.review_id = review.review_id WHERE product_id = ${product_id}`,
     [product_id],
   )
     .then(function(data) {
@@ -32,19 +32,12 @@ function getReviews(req, res, next) {
 }
 
 function postReview(req, res, next) {
-  const product_id = parseInt(request.params.product_id);
-  const {
-    rating,
-    summary,
-    body,
-    recommend,
-    name,
-    email,
-    // photos,
-    // characteristics,
-  } = req.body;
+  const product_id = parseInt(req.params.product_id);
+  console.log(product_id);
+  console.log(req.body);
   db.none(
     `INSERT INTO reviews(rating, summary, body, recommend, name, email) VALUES (${product_id},${rating}, ${summary}, ${body}, ${recommend}, ${name}, ${email})`,
+    [product_id, req.body],
   )
     .then(function() {
       console.log('clicked');
