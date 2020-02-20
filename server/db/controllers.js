@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 const promise = require('bluebird');
+const moment = require('moment');
 
 const options = {
   // Initialization Options
@@ -31,24 +32,14 @@ function getReviews(req, res, next) {
     });
 }
 
-function postReview(req, res, next) {
-  const product_id = parseInt(req.params.product_id);
-  console.log(product_id);
-  console.log(req.body);
-  db.none(
-    `INSERT INTO reviews(rating, summary, body, recommend, name, email) VALUES (${product_id},${rating}, ${summary}, ${body}, ${recommend}, ${name}, ${email})`,
-    [product_id, req.body],
-  )
-    .then(function() {
-      console.log('clicked');
-      res.status(201).json({
-        status: 'success',
-        message: 'Inserted Review',
-      });
-    })
-    .catch(function(err) {
-      return next(err);
-    });
+function postReview(product_id, rating, summary, body, recommend, name, email) {
+  console.log(summary);
+  const date = moment().format('MMM Do YY');
+  return db.none(
+    `INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},${date},${rating}, ${JSON.stringify(
+      summary,
+    )}, ${body}, ${recommend}, ${name}, ${email}, false, 0)`,
+  );
 }
 
 // const getMeta = (req, res) => {
