@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable camelcase */
 const promise = require('bluebird');
 const moment = require('moment');
@@ -42,14 +43,23 @@ function postReview(
   email,
   url,
 ) {
-  console.log(url);
   const date = moment().format('MMM DD YYYY');
-  console.log(date);
   return db.none(
-    `WITH new_review as (INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},'${date}',${rating}, '${summary}', '${body}', ${recommend}, '${name}', '${email}', false, 0) returning review_id) INSERT INTO images (review_id, url) VALUES((SELECT (SELECT review_id from new_review), unnest(${url})) )`,
+    `INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},'${date}',${rating}, '${summary}', '${body}', ${recommend}, '${name}', '${email}', false, 0))`,
+    [product_id, date, rating, summary, body, recommend, name, email],
   );
+  //   .then(
+  //     (data) => {
+  //       return console.log(data);
+  //     },
+  //     // url.map((p) => {
+  //     //   `INSERT INTO images (review_id, url) VALUES((SELECT review_id from new_review), ${p}`;
+  //     // }),
+  //   )
+  //   .catch((err) => {
+  //     throw err;
+  //   });
 }
-
 // const getMeta = (req, res) => {
 //   const product_id = req.params;
 //   const { review_id, rating, recommend } = req.body;

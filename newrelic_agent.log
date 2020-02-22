@@ -1,0 +1,50 @@
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:57:03.848Z","msg":"Using New Relic for Node.js. Agent version: 6.4.1; Node version: v12.13.1."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:57:09.976Z","msg":"Agent state changed from stopped to starting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:57:17.363Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:57:17.364Z","msg":"Agent state changed from starting to connecting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:58:06.258Z","msg":"Agent state changed from connecting to connected."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:58:06.258Z","msg":"Connected to collector-001.newrelic.com:443 with agent run ID Bctn85Xu2mIJACghJg5n6rReUVAAAAgBAAAnIQEAAC52AgAOZ-qyAwAFNi40LjEADFllZUhhdy5sb2NhbAADU0RD.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:58:06.258Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/2629926/applications/241691314","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:58:06.260Z","msg":"Valid event_harvest_config received. Updating harvest cycles. {\"report_period_ms\":5000,\"harvest_limits\":{\"error_event_data\":8,\"custom_event_data\":83,\"analytic_event_data\":833}}"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:58:06.322Z","msg":"Agent state changed from connected to started."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11894,"time":"2020-02-22T15:58:07.323Z","msg":"Starting initial 1000ms harvest."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:58:52.335Z","msg":"Using New Relic for Node.js. Agent version: 6.4.1; Node version: v12.13.1."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:58:54.163Z","msg":"Agent state changed from stopped to starting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:58:55.349Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:58:55.349Z","msg":"Agent state changed from starting to connecting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:59:17.532Z","msg":"Agent state changed from connecting to connected."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:59:17.532Z","msg":"Connected to collector-001.newrelic.com:443 with agent run ID BStTwlig9zBOACghJg5n6rReUVA8AAgBAAAnIQEAAC6UAgQOZ-qyAwAFNi40LjEADFllZUhhdy5sb2NhbAADU0RD.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:59:17.532Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/2629926/applications/241691314","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:59:17.534Z","msg":"Valid event_harvest_config received. Updating harvest cycles. {\"report_period_ms\":5000,\"harvest_limits\":{\"error_event_data\":8,\"custom_event_data\":83,\"analytic_event_data\":833}}"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:59:17.537Z","msg":"Agent state changed from connected to started."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":11924,"time":"2020-02-22T15:59:18.542Z","msg":"Starting initial 1000ms harvest."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:27:54.770Z","msg":"Using New Relic for Node.js. Agent version: 6.4.1; Node version: v12.13.1."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:27:55.350Z","msg":"Agent state changed from stopped to starting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:27:56.667Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:27:56.667Z","msg":"Agent state changed from starting to connecting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:28:19.946Z","msg":"Agent state changed from connecting to connected."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:28:19.946Z","msg":"Connected to collector-001.newrelic.com:443 with agent run ID Bd9knZS9cLRwACghJg5n6rReUVcIAAgBAAAnIQEAAC9dAgQOZ-qyAwAFNi40LjEADFllZUhhdy5sb2NhbAADU0RD.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:28:19.946Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/2629926/applications/241691314","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:28:19.948Z","msg":"Valid event_harvest_config received. Updating harvest cycles. {\"report_period_ms\":5000,\"harvest_limits\":{\"error_event_data\":8,\"custom_event_data\":83,\"analytic_event_data\":833}}"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:28:19.951Z","msg":"Agent state changed from connected to started."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12125,"time":"2020-02-22T16:28:20.953Z","msg":"Starting initial 1000ms harvest."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:26.586Z","msg":"Using New Relic for Node.js. Agent version: 6.4.1; Node version: v12.13.1."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:27.117Z","msg":"Agent state changed from stopped to starting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:27.501Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:27.501Z","msg":"Agent state changed from starting to connecting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:35.985Z","msg":"Agent state changed from connecting to connected."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:35.985Z","msg":"Connected to collector-001.newrelic.com:443 with agent run ID BS_5vufvFTojACghJg5n6rReUVcIAAgBAAAnIQEAAC-BAgQOZ-qyAwAFNi40LjEADFllZUhhdy5sb2NhbAADU0RD.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:35.985Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/2629926/applications/241691314","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:35.987Z","msg":"Valid event_harvest_config received. Updating harvest cycles. {\"report_period_ms\":5000,\"harvest_limits\":{\"error_event_data\":8,\"custom_event_data\":83,\"analytic_event_data\":833}}"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:35.990Z","msg":"Agent state changed from connected to started."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12161,"time":"2020-02-22T16:28:36.994Z","msg":"Starting initial 1000ms harvest."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:47.033Z","msg":"Using New Relic for Node.js. Agent version: 6.4.1; Node version: v12.13.1."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:47.661Z","msg":"Agent state changed from stopped to starting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:48.069Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:48.069Z","msg":"Agent state changed from starting to connecting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:58.678Z","msg":"Agent state changed from connecting to connected."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:58.678Z","msg":"Connected to collector-001.newrelic.com:443 with agent run ID BUne-aPuQmJ4ACghJg5n6rReUVcIAAgBAAAnIQEAAC-aAgQOZ-qyAwAFNi40LjEADFllZUhhdy5sb2NhbAADU0RD.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:58.678Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/2629926/applications/241691314","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:58.680Z","msg":"Valid event_harvest_config received. Updating harvest cycles. {\"report_period_ms\":5000,\"harvest_limits\":{\"error_event_data\":8,\"custom_event_data\":83,\"analytic_event_data\":833}}"}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:58.683Z","msg":"Agent state changed from connected to started."}
+{"v":0,"level":30,"name":"newrelic","hostname":"YeeHaw.local","pid":12186,"time":"2020-02-22T16:28:59.684Z","msg":"Starting initial 1000ms harvest."}
