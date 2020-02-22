@@ -42,6 +42,7 @@ function postReview(
   name,
   email,
   url,
+  characteristics,
 ) {
   const date = moment().format('MMM DD YYYY');
   return db
@@ -55,6 +56,20 @@ function postReview(
           `INSERT INTO images (review_id, url) VALUES(${reviewId}, '${p}')`,
         );
       });
+      return reviewId;
+    })
+    .then((reviewId) => {
+      characteristics.map((charObj) => {
+        const charName = charObj.name;
+        const charValue = charObj.value;
+        return db.none(
+          `WITH new_char as (INSERT INTO characteristics(product_id, name) VALUES (${product_id}, '${charName}') returning char_id) INSERT INTO reviewchar (review_id, char_id, value) VALUES (${reviewId}, (select char_id from new_char), ${charValue})`,
+        );
+      });
+      return reviewId;
+    })
+    .then((data) => {
+      console.log(data);
     })
     .catch((err) => {
       throw err;
