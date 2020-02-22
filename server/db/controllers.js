@@ -23,8 +23,8 @@ function getReviews(req, res, next) {
     .then(function(data) {
       console.log('clicked');
       res.status(200).json({
-        status: 'success',
-        data: data,
+        product_id: parseInt(req.params.product_id),
+        results: data,
         message: 'Got all reviews for product',
       });
     })
@@ -75,20 +75,74 @@ function postReview(
       throw err;
     });
 }
-// const getMeta = (req, res) => {
-//   const product_id = req.params;
-//   const { review_id, rating, recommend } = req.body;
-//   pool.query(
-//     'SELECT (product_id, review_id, rating, recommend) FROM reviews Inner JOIN characteristics ON reviews.product_id = characteristics.product_id',
-//     [product_id, review_id, rating, recommend],
-//     (error, results) => {
-//       if (error) {
-//         throw error;
-//       }
-//       res.send(200);
-//     },
-//   );
-// };
+
+function getMeta(req, res, next) {
+  const product_id = parseInt(req.params.product_id);
+  const ratingsObj = {};
+  const recObj = {};
+  const charObj = {};
+  db.any(`SELECT (rating) FROM review where product_id = ${product_id}`)
+    .then((data) => {
+      data.map((line) => {
+        const row = line.rating;
+        if (ratingsObj[row] === undefined) {
+          ratingsObj[row] = 1;
+        } else {
+          ratingsObj[row] += 1;
+        }
+      });
+      return ratingsObj;
+    })
+    .then((data) => {
+      return db.any(
+        `Select (recommend) FROM review where product_id = ${product_id}`,
+      );
+    })
+    .then((data) => {
+      data.map((line) => {
+        const row = line.recommend;
+        if (recObj[row] === undefined) {
+          recObj[row] = 1;
+        } else {
+          recObj[row] += 1;
+        }
+      });
+      return recObj;
+    })
+    .then(() => {
+      return db.any(
+        `SELECT characteristics.char_id, characteristics.name, reviewchar.value FROM characteristics LEFT OUTER JOIN reviewchar ON reviewchar.char_id = characteristics.char_id WHERE product_id = ${product_id}`,
+      );
+    })
+    .then((data) => {
+      data.map((line) => {
+        const type = line.name;
+        const typeid = line.char_id;
+        const typevalue = line.value;
+        if (charObj[type] === undefined) {
+          charObj[type] = {
+            id: typeid,
+            value: typevalue,
+          };
+        } else {
+          charObj[type].value += typevalue;
+        }
+      });
+      return charObj;
+    })
+    .then(function(data) {
+      res.status(200).json({
+        product_id: parseInt(req.params.product_id),
+        ratings: ratingsObj,
+        recommend: recObj,
+        characteristics: charObj,
+        message: 'Meta Data Retrieved',
+      });
+    })
+    .catch(function(err) {
+      return next(err);
+    });
+}
 
 function updateHelp(req, res, next) {
   const review_id = parseInt(req.params.review_id);
@@ -127,7 +181,7 @@ function updateReport(req, res, next) {
 module.exports = {
   getReviews: getReviews,
   postReview: postReview,
-  // getMeta,
+  getMeta: getMeta,
   updateHelp: updateHelp,
   updateReport: updateReport,
 };

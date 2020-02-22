@@ -44,6 +44,7 @@ router.post('/reviews/:product_id', function(req, res, next) {
       return next(err);
     });
 });
+router.get('/reviews/:product_id/meta', db.getMeta);
 router.put('/reviews/helpful/:review_id', db.updateHelp);
 router.put('/reviews/report/:review_id', db.updateReport);
 
