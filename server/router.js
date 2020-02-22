@@ -8,7 +8,8 @@ const db = require('./db/controllers.js');
 
 router.use(bodyParser.json());
 
-router.get('/reviews/:product_id/list', db.getReviews);
+const sort = 'sort=newest';
+router.get(`/reviews/:product_id/list`, db.getReviews);
 router.post('/reviews/:product_id', function(req, res, next) {
   const product_id = parseInt(req.params.product_id);
   const {

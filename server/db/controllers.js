@@ -15,15 +15,26 @@ const db = pgp(connectionString);
 
 function getReviews(req, res, next) {
   const product_id = parseInt(req.params.product_id);
-  console.log(product_id);
+  const { sort } = req.query;
+  let order = 'review.date ASC';
+  if (sort === 'newest') {
+    order = 'review.date ASC';
+  } else if (sort === 'helpful') {
+    order = 'review.helpfulness DESC';
+  } else if (sort === 'relevant') {
+    order = 'review.helpfulness DESC, review.date ASC';
+  }
+  console.log(order);
   db.any(
-    `SELECT review.review_id, review.rating, review.summary, review.recommend, review.response, review.body, review.date, review.name, review.helpfulness, images.url FROM review INNER JOIN images ON images.review_id = review.review_id WHERE product_id = ${product_id}`,
+    `SELECT review.review_id, review.rating, review.summary, review.recommend, review.response, review.body, review.date, review.name, review.helpfulness, images.url FROM review INNER JOIN images ON images.review_id = review.review_id WHERE product_id = ${product_id} ORDER BY ${order}`,
     [product_id],
   )
     .then(function(data) {
       console.log('clicked');
       res.status(200).json({
         product_id: parseInt(req.params.product_id),
+        page: 0,
+        count: data.length,
         results: data,
         message: 'Got all reviews for product',
       });
