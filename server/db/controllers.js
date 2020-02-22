@@ -44,21 +44,21 @@ function postReview(
   url,
 ) {
   const date = moment().format('MMM DD YYYY');
-  return db.none(
-    `INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},'${date}',${rating}, '${summary}', '${body}', ${recommend}, '${name}', '${email}', false, 0))`,
-    [product_id, date, rating, summary, body, recommend, name, email],
-  );
-  //   .then(
-  //     (data) => {
-  //       return console.log(data);
-  //     },
-  //     // url.map((p) => {
-  //     //   `INSERT INTO images (review_id, url) VALUES((SELECT review_id from new_review), ${p}`;
-  //     // }),
-  //   )
-  //   .catch((err) => {
-  //     throw err;
-  //   });
+  return db
+    .many(
+      `INSERT INTO review(product_id, date, rating, summary, body, recommend, name, email, report, helpfulness) VALUES (${product_id},'${date}',${rating}, '${summary}', '${body}', ${recommend}, '${name}', '${email}', false, 0) returning review_id`,
+    )
+    .then((data) => {
+      const reviewId = data[0].review_id;
+      url.map((p) => {
+        return db.none(
+          `INSERT INTO images (review_id, url) VALUES(${reviewId}, '${p}')`,
+        );
+      });
+    })
+    .catch((err) => {
+      throw err;
+    });
 }
 // const getMeta = (req, res) => {
 //   const product_id = req.params;
