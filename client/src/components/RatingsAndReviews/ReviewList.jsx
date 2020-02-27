@@ -6,7 +6,7 @@ import React from 'react';
 import axios from 'axios';
 import ReviewTile from './ReviewTile.jsx';
 import NewReview from './NewReview.jsx';
-const url = 'http://3.134.102.30/reviews';
+const url = 'http://localhost:3000reviews';
 
 class ReviewList extends React.Component {
   constructor(props) {

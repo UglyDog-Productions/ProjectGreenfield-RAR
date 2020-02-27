@@ -9,7 +9,7 @@ import ReviewBreakdown from './Graph/ReviewBreakdown.jsx';
 import exampleData from '../../../../sampleData/RAR/reviewsList.json';
 import './RAR.scss';
 
-const url = 'http://3.134.102.30';
+const url = 'http://localhost:3000';
 
 class RatingsAndReviews extends React.Component {
   constructor(props) {

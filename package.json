@@ -2,7 +2,7 @@
   "name": "uglydog",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
     "build": "webpack --mode production",
     "react-dev": "webpack -d --watch",
@@ -10,7 +10,8 @@
     "dev:start": "npm run react-dev & npm run start",
     "test": "jest --config ./jest.config.json",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint"
+    "lint": "eslint",
+    "portal": "live-server ./client/dist"
   },
   "keywords": [],
   "author": "",
@@ -49,6 +50,7 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.8.3",
+    "artillery": "^1.6.0-29",
     "axios": "^0.19.2",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",

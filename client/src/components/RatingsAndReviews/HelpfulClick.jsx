@@ -3,7 +3,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const url = 'http://3.134.102.30/reviews/helpful';
+const url = 'http://localhost:3000/reviews/helpful';
 
 class HelpfulClick extends React.Component {
   constructor(props) {

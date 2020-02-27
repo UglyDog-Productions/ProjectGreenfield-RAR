@@ -24,7 +24,6 @@ function getReviews(req, res, next) {
   } else if (sort === 'relevant') {
     order = 'review.helpfulness DESC, review.date ASC';
   }
-  console.log(order);
   db.any(
     `SELECT review.review_id, review.rating, review.summary, review.recommend, review.response, review.body, review.date, review.name, review.helpfulness, images.url FROM review INNER JOIN images ON images.review_id = review.review_id WHERE product_id = ${product_id} ORDER BY ${order}`,
     [product_id],

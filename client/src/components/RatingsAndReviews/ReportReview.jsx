@@ -4,7 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import RedDot from './RedDot.jsx';
 
-const url = 'http://3.134.102.30/reviews/report';
+const url = 'http://localhost:3000/reviews/report';
 
 class ReportReview extends React.Component {
   constructor(props) {

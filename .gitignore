@@ -1,5 +1,5 @@
 node_modules
-
+newrelic_agent.log
+.aws-config.json
 .history/
-
 client/.DS_Store

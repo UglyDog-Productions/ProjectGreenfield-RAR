@@ -12,7 +12,7 @@ import axios from 'axios';
 import AverageStar from '../Stars/AverageStar.jsx';
 import SideGraph from './SideGraph.jsx';
 
-const url = 'http://3.134.102.30/reviews';
+const url = 'http://localhost:3000/reviews';
 
 class ReviewBreakdown extends React.Component {
   constructor(props) {
